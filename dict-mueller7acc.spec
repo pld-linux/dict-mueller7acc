@@ -3,7 +3,7 @@ Summary:	English-Russian dictionary with accents for dictd
 Summary(pl):	S³ownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://mueller-dic.chat.ru/Mueller7accentGPL.tgz
