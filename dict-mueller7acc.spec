@@ -3,7 +3,7 @@ Summary:	English-Russian dictionary with accents for dictd
 Summary(pl):	S³ownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://mueller-dic.chat.ru/Mueller7accentGPL.tgz
@@ -46,7 +46,7 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/dictd,%{_sysconfdir}/dictd}
 dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Mueller English-Russian dictionary, 7-th edition with accents (%{version})
 database %{dictname} {
-	data  \"$dictprefix.dict.dz\"
+	data  \"$dictprefix.dict\"
 	index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
 mv %{dictname}.* $RPM_BUILD_ROOT%{_datadir}/dictd
