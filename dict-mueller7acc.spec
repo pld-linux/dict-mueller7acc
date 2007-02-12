@@ -1,6 +1,6 @@
 %define		dictname mueller7acc
 Summary:	English-Russian dictionary with accents for dictd
-Summary(pl.UTF-8):   Słownik angielsko-rosyjski z akcentami dla dictd
+Summary(pl.UTF-8):	Słownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
 Release:	4
