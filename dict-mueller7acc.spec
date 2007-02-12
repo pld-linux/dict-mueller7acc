@@ -1,6 +1,6 @@
 %define		dictname mueller7acc
 Summary:	English-Russian dictionary with accents for dictd
-Summary(pl):	S≥ownik angielsko-rosyjski z akcentami dla dictd
+Summary(pl.UTF-8):   S≈Çownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
 Release:	4
@@ -23,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Electronic version of 7th edition of English-Russian dictionary with
 accents by V. K. Mueller.
 
-%description -l pl
-Elektroniczna wersja 7. wydania s≥ownika angielsko rosyjskiego z
+%description -l pl.UTF-8
+Elektroniczna wersja 7. wydania s≈Çownika angielsko rosyjskiego z
 akcentami V. K. Muellera.
 
 %prep
