@@ -3,7 +3,7 @@ Summary:	English-Russian dictionary with accents for dictd
 Summary(pl):	S³ownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://mueller-dic.chat.ru/Mueller7accentGPL.tgz
@@ -15,8 +15,9 @@ Source1:	http://www.math.sunysb.edu/~comech/tools/to-dict
 URL:		http://mueller-dic.chat.ru/
 BuildRequires:	dictfmt
 BuildRequires:	dictzip
-Requires:	dictd
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	%{_sysconfdir}/dictd
+Requires:	dictd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,10 +30,10 @@ akcentami V. K. Muellera.
 
 %prep
 %setup -q -c
-
-%build
 cp %{SOURCE1} .
 chmod +x ./to-dict
+
+%build
 ./to-dict --no-trans usr/local/share/dict/Mueller7accentGPL.koi mueller7acc.notr
 ./to-dict --src-data mueller7acc.notr mueller7acc.data && rm -f mueller7acc.notr
 ./to-dict --data-dict mueller7acc.data mueller7acc && rm -f mueller7acc.data
@@ -55,18 +56,16 @@ mv %{dictname}.* $RPM_BUILD_ROOT%{_datadir}/dictd
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2
-fi
+%service -q dictd restart
 
 %postun
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2 || true
+if [ "$1" = 0 ]; then
+	%service -q dictd restart
 fi
 
 %files
 %defattr(644,root,root,755)
 %doc usr/local/share/mova/Mueller7.txt
 %lang(ru) %doc usr/local/share/mova/Mueller7_koi.txt
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/dictd/%{dictname}.dictconf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dictd/%{dictname}.dictconf
 %{_datadir}/dictd/%{dictname}.*
