@@ -3,7 +3,7 @@ Summary:	English-Russian dictionary with accents for dictd
 Summary(pl.UTF-8):	Słownik angielsko-rosyjski z akcentami dla dictd
 Name:		dict-%{dictname}
 Version:	1.2
-Release:	7
+Release:	8
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://mueller-dic.chat.ru/Mueller7accentGPL.tgz
@@ -18,6 +18,7 @@ BuildRequires:	dictzip
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	%{_sysconfdir}/dictd
 Requires:	dictd
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
